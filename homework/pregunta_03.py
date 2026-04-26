@@ -15,3 +15,27 @@ def pregunta_03():
     [('A', 53), ('B', 36), ('C', 27), ('D', 31), ('E', 67)]
 
     """
+    path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    file = os.path.join(path,"files","input","data.csv")
+    with open (file, "r") as f:
+        lines = f.readlines()
+
+    lines = [line.strip() for line in lines]
+    lines = [line.split("\t") for line in lines]
+
+    letter_count = {}
+
+    for line in lines:
+        letter = line[0]
+        value = line[1]
+        if letter in letter_count:
+            letter_count[letter] += int(value)
+        else:
+            letter_count[letter] = int(value)
+
+    letter_count = sorted(letter_count.items())
+
+    return letter_count
+
+if __name__ == "__main__":
+    print(pregunta_03())

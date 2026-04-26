@@ -24,3 +24,26 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+    path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    file = os.path.join(path,'files','input','data.csv')
+    with open(file, "r") as f:
+        lines = f.readlines()
+    lines = [line.strip() for line in lines]
+    lines = [line.split('\t') for line in lines]
+    lines = [line[4].split(',') for line in lines]
+    lines = [element.split(':') for sub in lines for element in sub]
+    lines = [element[0] for element in lines]
+    chain_count = {}
+
+    for element in lines:
+        if element in chain_count:
+            chain_count[element] += 1
+        else:
+            chain_count[element] = 1
+    
+    chain_count = dict(sorted(chain_count.items()))
+
+    return chain_count
+
+if __name__ == '__main__':
+    print(pregunta_09())

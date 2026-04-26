@@ -16,3 +16,20 @@ def pregunta_11():
 
 
     """
+    suma = {}
+
+    with open("files/input/data.csv", "r") as archivo:
+        for linea in archivo:
+            partes = linea.strip().split("\t")
+
+            numero = int(partes[1])
+            letras = partes[3].split(",")
+
+            for letra in letras:
+                if letra in suma:
+                    suma[letra] += numero
+                else:
+                    suma[letra] = numero
+
+    resultado = dict(sorted(suma.items()))
+    return resultado

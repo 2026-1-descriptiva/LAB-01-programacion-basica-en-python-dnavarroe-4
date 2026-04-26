@@ -15,3 +15,24 @@ def pregunta_12():
     {'A': 177, 'B': 187, 'C': 114, 'D': 136, 'E': 324}
 
     """
+    path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    file = os.path.join(path,'files','input','data.csv')
+    with open(file, "r") as f:
+        lines = f.readlines()
+    lines = [line.strip() for line in lines]
+    lines = [line.split('\t') for line in lines]
+    count = {}
+
+    for line in lines:
+        key = line[0]
+        pairs = line[4].split(',')
+        split_pairs = [pair.split(':') for pair in pairs]
+        value = sum(int(pair[1]) for pair in split_pairs)
+        if key in count:
+            count[key] += value
+        else:
+            count[key] = value
+    
+    count = dict(sorted(count.items()))
+
+    return count

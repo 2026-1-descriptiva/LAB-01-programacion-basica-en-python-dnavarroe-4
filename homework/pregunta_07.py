@@ -25,3 +25,18 @@ def pregunta_07():
      (9, ['A', 'B', 'E', 'A', 'A', 'C'])]
 
     """
+    agrupado = {}
+
+    with open("files/input/data.csv", "r") as archivo:
+        for linea in archivo:
+            partes = linea.strip().split("\t")
+            letra = partes[0]
+            numero = int(partes[1])
+
+            if numero in agrupado:
+                agrupado[numero].append(letra)
+            else:
+                agrupado[numero] = [letra]
+
+    resultado = sorted(agrupado.items())
+    return resultado

@@ -26,3 +26,26 @@ def pregunta_04():
      ('12', 3)]
 
     """
+    path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    file = os.path.join(path,'files','input','data.csv')
+
+    with open(file, "r") as f:
+        lines = f.readlines()
+
+    lines = [line.strip() for line in lines]
+    lines = [line.split('\t') for line in lines]
+    lines = [line[2].split('-') for line in lines]
+
+    month_count = {}
+    for line in lines:
+        month = line[1]
+        if month in month_count:
+            month_count[month] += 1
+        else:
+            month_count[month] = 1
+    month_count = sorted(month_count.items())
+
+    return month_count
+
+if __name__ == '__main__':
+    print(pregunta_04())
