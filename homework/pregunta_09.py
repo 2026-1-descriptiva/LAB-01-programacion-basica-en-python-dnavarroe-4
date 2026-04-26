@@ -24,8 +24,7 @@ def pregunta_09():
      'jjj': 18}}
 
     """
-    path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    file = os.path.join(path,'files','input','data.csv')
+    file = "files/input/data.csv"
     with open(file, "r") as f:
         lines = f.readlines()
     lines = [line.strip() for line in lines]

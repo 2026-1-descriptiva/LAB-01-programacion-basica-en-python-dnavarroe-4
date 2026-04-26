@@ -15,8 +15,7 @@ def pregunta_02():
     [('A', 8), ('B', 7), ('C', 5), ('D', 6), ('E', 14)]
 
     """
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    ruta = os.path.join(base_dir, "files", "input", "data.csv")
+    ruta = "files/input/data.csv"
     with open(ruta, "r") as f:
         lines = f.readlines()   
 

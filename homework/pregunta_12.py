@@ -15,8 +15,7 @@ def pregunta_12():
     {'A': 177, 'B': 187, 'C': 114, 'D': 136, 'E': 324}
 
     """
-    path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    file = os.path.join(path,'files','input','data.csv')
+    file = "files/input/data.csv"
     with open(file, "r") as f:
         lines = f.readlines()
     lines = [line.strip() for line in lines]
